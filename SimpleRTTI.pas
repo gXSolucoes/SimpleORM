@@ -579,6 +579,13 @@ begin
         tkUString,
         tkString      : aDictionary.Add(prpRtti.FieldName, prpRtti.GetValue(Pointer(FInstance)).AsString);
         tkVariant     : aDictionary.Add(prpRtti.FieldName, prpRtti.GetValue(Pointer(FInstance)).AsVariant);
+        tkEnumeration :
+          begin
+            if prpRtti.GetValue(Pointer(FInstance)).IsType<boolean> then
+              aDictionary.Add(prpRtti.FieldName, prpRtti.GetValue(Pointer(FInstance)).AsBoolean)
+            else
+              aDictionary.Add(prpRtti.FieldName, prpRtti.GetValue(Pointer(FInstance)).AsInteger);
+          end;
       else
           aDictionary.Add(prpRtti.FieldName, prpRtti.GetValue(Pointer(FInstance)).AsString);
       end;

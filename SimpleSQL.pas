@@ -82,6 +82,7 @@ begin
     aSQL := aSQL + 'INSERT INTO ' + aClassName;
     aSQL := aSQL + ' (' + aFields + ') ';
     aSQL := aSQL + ' VALUES (' + aParam + ');';
+    aSQL := aSQL + ' select last_insert_id() as id';
 end;
 
 function TSimpleSQL<T>.Join(aSQL: String): iSimpleSQL<T>;
